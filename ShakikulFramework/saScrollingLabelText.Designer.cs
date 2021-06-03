@@ -29,12 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.timerScrollText = new System.Windows.Forms.Timer(this.components);
+            this.timerLabelText = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
+            // 
+            // timerLabelText
+            // 
+            this.timerLabelText.Tick += new System.EventHandler(this.timerLabelText_Tick);
             // 
             // saScrollingLabelText
             // 
-            this.Name = "saScrollingLabelText";
             this.Size = new System.Drawing.Size(256, 229);
             this.ResumeLayout(false);
 
@@ -42,6 +45,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Timer timerScrollText;
+        private System.Windows.Forms.Timer timerLabelText;
     }
 }

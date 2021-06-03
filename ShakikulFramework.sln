@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShakikulFramework", "ShakikulFramework\ShakikulFramework.csproj", "{0A656388-98CA-465E-B6DC-A030287EAE39}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApplication1", "..\WindowsFormsApplication1\WindowsFormsApplication1.csproj", "{EE45862C-B88F-4302-A2E2-24BE5876D354}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{0A656388-98CA-465E-B6DC-A030287EAE39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A656388-98CA-465E-B6DC-A030287EAE39}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A656388-98CA-465E-B6DC-A030287EAE39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE45862C-B88F-4302-A2E2-24BE5876D354}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE45862C-B88F-4302-A2E2-24BE5876D354}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE45862C-B88F-4302-A2E2-24BE5876D354}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE45862C-B88F-4302-A2E2-24BE5876D354}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
