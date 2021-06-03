@@ -7,4 +7,11 @@ namespace ShakikulFramework
         LeftToRight,
         RightToLeft
     }
+
+    public enum SelectHandle
+    {
+        Form,
+        Selected
+        
+    }
 }

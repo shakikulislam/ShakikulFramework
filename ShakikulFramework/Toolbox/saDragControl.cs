@@ -26,12 +26,32 @@ namespace ShakikulFramework.Toolbox
             if (flag)
             {
                 saDragControl.ReleaseCapture();
-                saDragControl.SendMessage(this.SelectControl.FindForm().Handle, 161, 2, 0);
+                if (SelectHandle.Form==_SelectHandle)
+                {
+                    saDragControl.SendMessage(this.SelectControl.FindForm().Handle, 161, 2, 0);
+                }
+
+                if (SelectHandle.Selected==_SelectHandle)
+                {
+                    saDragControl.SendMessage(this.SelectControl.Handle, 161, 2, 0);
+                }
+                
             }
         }
 
         #region Properties
 
+        private SelectHandle _SelectHandle=SelectHandle.Form;
+
+        [Category("Shakikul Framework")]
+        [DefaultValue(typeof(SelectHandle),"Form")]
+        public SelectHandle SelectHandle
+        {
+            get { return _SelectHandle; }
+            set { _SelectHandle = value; }
+        }
+
+        [Category("Shakikul Framework")]
         public Control SelectControl
         {
             get { return _control; }
