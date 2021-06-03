@@ -49,6 +49,9 @@
     <Compile Include="saScrollingLabelText.Designer.cs">
       <DependentUpon>saScrollingLabelText.cs</DependentUpon>
     </Compile>
+    <Compile Include="Toolbox\saDragControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="saScrollingLabelText.resx">
