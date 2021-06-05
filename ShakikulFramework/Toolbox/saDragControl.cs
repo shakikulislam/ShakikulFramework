@@ -13,6 +13,7 @@ namespace ShakikulFramework.Toolbox
     {
         private Control _control;
 
+        #region Event
 
         [DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr a, int msg, int wParam, int lParam);
@@ -25,19 +26,21 @@ namespace ShakikulFramework.Toolbox
             bool flag = e.Button == MouseButtons.Left;
             if (flag)
             {
-                saDragControl.ReleaseCapture();
-                if (SelectHandle.Form==_SelectHandle)
+                ReleaseCapture();
+                if (SelectHandle.Form == _SelectHandle)
                 {
-                    saDragControl.SendMessage(this.SelectControl.FindForm().Handle, 161, 2, 0);
+                    SendMessage(this.SelectControl.FindForm().Handle, 161, 2, 0);
                 }
 
-                if (SelectHandle.Selected==_SelectHandle)
+                if (SelectHandle.Selected == _SelectHandle)
                 {
-                    saDragControl.SendMessage(this.SelectControl.Handle, 161, 2, 0);
+                    SendMessage(this.SelectControl.Handle, 161, 2, 0);
                 }
-                
+
             }
         }
+
+        #endregion
 
         #region Properties
 
