@@ -8,22 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ShakikulFramework
+namespace ShakikulFramework.Toolbox
 {
-    public partial class SAScrollingLabelText : Label
+    public partial class SAScrollingLabel : Label
     {
-        public SAScrollingLabelText()
+        public SAScrollingLabel()
         {
             InitializeComponent();
-
-            UseCompatibleTextRendering = true;
         }
+
 
         #region ...Properties...
 
-        private int _speed = 5;
+        private int _speed = 1;
         [Category("Shakikul Framework")]
-        [DefaultValue(typeof(int), "5")]
+        [DefaultValue(typeof(int), "1")]
         public int ScrollSpeed
         {
             get { return _speed; }
@@ -45,30 +44,29 @@ namespace ShakikulFramework
                 _scrollDirection = value;
                 if (ScrollingTextEnum.None != _scrollDirection)
                 {
-                    timerLabelText.Start();
+                    timerScrollingLabel.Start();
                 }
                 else
                 {
-                    timerLabelText.Stop();
-                    this.TextAlign = _textAlign;
+                    timerScrollingLabel.Stop();
+                    //this.TextAlign = _textAlign;
                 }
                 this.Invalidate();
             }
 
         }
 
+        private Control _control;
+        [Category("Shakikul Framework")]
+        public Control SelectControl
+        {
+            get { return _control; }
+            set { _control = value; }
+        }
+
         #endregion
 
         #region ...Override Default Properties...
-
-
-        //[Browsable(false)]
-        //public override bool AutoSize
-        //{
-        //    get { return base.AutoSize; }
-        //    set { base.AutoSize = value; }
-        //}
-
 
         private ContentAlignment _textAlign = ContentAlignment.MiddleCenter;
 
@@ -84,43 +82,31 @@ namespace ShakikulFramework
         }
         #endregion
 
-        #region ...Override...
-
-        private int _position;
-        protected override void OnPaint(PaintEventArgs e)
+        private void timerScrollingLabel_Tick(object sender, EventArgs e)
         {
-            e.Graphics.TranslateTransform(_position, 0);
-            base.OnPaint(e);
-        }
-        #endregion
+            if (_control == null) return;
 
-        private void timerLabelText_Tick(object sender, EventArgs e)
-        {
-            if (ScrollingTextEnum.None == _scrollDirection)
-            {
-                _position = this.Width;
-            }
-            
             if (ScrollingTextEnum.LeftToRight == _scrollDirection)
             {
-                if (_position > this.Width)
+                this.Location = new Point(this.Location.X + _speed, this.Location.Y);
+
+                if (this.Location.X > _control.Width)
                 {
-                    _position = -this.Width;
+                    this.Location = new Point(-this.Width,this.Location.Y);
                 }
-                _position += _speed;
             }
 
             if (ScrollingTextEnum.RightToLeft == _scrollDirection)
             {
-                if (_position < -this.Width)
+                this.Location = new Point(this.Location.X - _speed,this.Location.Y);
+
+                if (this.Location.X < -this.Width)
                 {
-                    _position = this.Width;
+                    this.Location = new Point(_control.Width, this.Location.Y);
                 }
-                _position -= _speed;
             }
 
             Invalidate();
         }
-
     }
 }

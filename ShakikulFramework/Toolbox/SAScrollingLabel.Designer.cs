@@ -1,6 +1,6 @@
-﻿namespace ShakikulFramework
+﻿namespace ShakikulFramework.Toolbox
 {
-    partial class SAScrollingLabelText
+    partial class SAScrollingLabel
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.timerLabelText = new System.Windows.Forms.Timer(this.components);
+            this.timerScrollingLabel = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
-            // timerLabelText
+            // timerScrollingLabel
             // 
-            this.timerLabelText.Tick += new System.EventHandler(this.timerLabelText_Tick);
+            this.timerScrollingLabel.Tick += new System.EventHandler(this.timerScrollingLabel_Tick);
             // 
-            // saScrollingLabelText
+            // SAScrollingLabel
             // 
-            this.Size = new System.Drawing.Size(256, 229);
+            this.Size = new System.Drawing.Size(274, 191);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Timer timerLabelText;
+        private System.Windows.Forms.Timer timerScrollingLabel;
     }
 }

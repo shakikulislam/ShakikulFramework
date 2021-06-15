@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace ShakikulFramework.Toolbox
 {
-    public class saDragControl : Component
+    public class SADragControl : Component
     {
         private Control _control;
 
