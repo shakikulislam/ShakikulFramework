@@ -54,6 +54,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Toolbox\SAErrorProvider.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Toolbox\SAErrorProvider.Designer.cs">
+      <DependentUpon>SAErrorProvider.cs</DependentUpon>
+    </Compile>
     <Compile Include="Toolbox\SAFormAlert.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +89,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Toolbox\SAErrorProvider.resx">
+      <DependentUpon>SAErrorProvider.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Toolbox\SAFormAlert.resx">
       <DependentUpon>SAFormAlert.cs</DependentUpon>
