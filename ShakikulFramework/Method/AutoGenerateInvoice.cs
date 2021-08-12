@@ -5,12 +5,14 @@ namespace ShakikulFramework.Method
     public class AutoGenerateInvoice
     {
         /// <summary>
-        /// This Method use only integer type invoice numbers
-        /// And return type only integer
+        /// This Method perfectly use only integer type invoice numbers
+        /// And return type only double
+        /// Using double because double type support max 9999999999999999999 big space.
+        /// This space is not possible of int type.
         /// </summary>
         /// <param name="invoiceSource"></param>
         /// <returns></returns>
-        public int Invoice(int invoiceSource)
+        public double Invoice(double invoiceSource)
         {
             return (invoiceSource + 1);
         }
@@ -24,7 +26,7 @@ namespace ShakikulFramework.Method
         public string Invoice(string invoiceSource, string firstInvoiceString)
         {
             var firstInvoiceStringLength = firstInvoiceString.Length;
-            var mainInvoice = Convert.ToInt32(invoiceSource.Substring(firstInvoiceStringLength));
+            var mainInvoice = Convert.ToDouble(invoiceSource.Substring(firstInvoiceStringLength));
             mainInvoice += 1;
             return firstInvoiceString + mainInvoice;
         }
@@ -41,7 +43,7 @@ namespace ShakikulFramework.Method
             var invoiceSourceLength = invoiceSource.Length;
             var firstInvoiceStringLength = firstInvoiceString.Length;
             var lastInvoiceStringLength = lastInvoiceString.Length;
-            var mainInvoice = Convert.ToInt32(invoiceSource.Substring(firstInvoiceStringLength,invoiceSourceLength-(firstInvoiceStringLength+lastInvoiceStringLength)));
+            var mainInvoice = Convert.ToDouble(invoiceSource.Substring(firstInvoiceStringLength,invoiceSourceLength-(firstInvoiceStringLength+lastInvoiceStringLength)));
             mainInvoice += 1;
             return firstInvoiceString + mainInvoice + lastInvoiceString;
         }
