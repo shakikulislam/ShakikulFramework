@@ -9,6 +9,13 @@ namespace ShakikulFramework.Toolbox
         {
             InitializeComponent();
         }
+
+        public SAErrorProvider(IContainer container)
+        {
+            container.Add(this);
+
+            InitializeComponent();
+        }
         
         CancelEventArgs _cancelEventArgs = new CancelEventArgs();
         public void Set(Control control, string message)
