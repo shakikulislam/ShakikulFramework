@@ -1,4 +1,7 @@
 ﻿using System;
+using System.CodeDom;
+using System.Globalization;
+using System.Net;
 
 namespace ShakikulFramework.Method
 {
@@ -14,7 +17,35 @@ namespace ShakikulFramework.Method
         /// <returns></returns>
         public double Invoice(double invoiceSource)
         {
-            return (invoiceSource + 1);
+            //var startPoint = 0;
+            if (invoiceSource >= 9999999999999999999)
+            {
+                throw new Exception("Invoice Out of Range please Contact Developer");
+            }
+
+            return invoiceSource + 0.01;
+
+            //var inputInvoice = Convert.ToString(invoiceSource);
+
+            //var subInvoice = Convert.ToDouble(inputInvoice.Substring(startPoint));
+            //int length=0;
+
+            //loop:
+            //if (subInvoice >= 9999)
+            //{
+            //    length++;
+            //    startPoint = length;
+            //    subInvoice = Convert.ToDouble(inputInvoice.Substring(startPoint));
+            //}
+
+            //if (subInvoice >= 9999)
+            //{
+            //    goto loop;
+            //}
+
+            //double invoice = subInvoice + 1;
+            //double finalInvoice = Convert.ToDouble(inputInvoice.Substring(0, length) + invoice);
+            //return finalInvoice;
         }
 
         /// <summary>
@@ -27,7 +58,11 @@ namespace ShakikulFramework.Method
         {
             var firstInvoiceStringLength = firstInvoiceString.Length;
             var mainInvoice = Convert.ToDouble(invoiceSource.Substring(firstInvoiceStringLength));
-            mainInvoice += 1;
+            if (mainInvoice == 9999999999999999999)
+            {
+                throw new Exception("Invoice Out of Range please Contact Developer");
+            }
+            mainInvoice += 0.01;
             return firstInvoiceString + mainInvoice;
         }
 
@@ -44,7 +79,11 @@ namespace ShakikulFramework.Method
             var firstInvoiceStringLength = firstInvoiceString.Length;
             var lastInvoiceStringLength = lastInvoiceString.Length;
             var mainInvoice = Convert.ToDouble(invoiceSource.Substring(firstInvoiceStringLength,invoiceSourceLength-(firstInvoiceStringLength+lastInvoiceStringLength)));
-            mainInvoice += 1;
+            if (mainInvoice == 9999999999999999999)
+            {
+                throw new Exception("Invoice Out of Range please Contact Developer");
+            }
+            mainInvoice += 0.01;
             return firstInvoiceString + mainInvoice + lastInvoiceString;
         }
 
