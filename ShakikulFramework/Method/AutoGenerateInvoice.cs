@@ -7,6 +7,7 @@ namespace ShakikulFramework.Method
 {
     public class AutoGenerateInvoice
     {
+        private double invoiceLimit = 18446744073709551615;
         /// <summary>
         /// This Method perfectly use only integer type invoice numbers
         /// And return type only double
@@ -18,7 +19,7 @@ namespace ShakikulFramework.Method
         public double Invoice(double invoiceSource)
         {
             //var startPoint = 0;
-            if (invoiceSource >= 9999999999999999999)
+            if (invoiceSource >= invoiceLimit)
             {
                 throw new Exception("Invoice Out of Range please Contact Developer");
             }
@@ -58,7 +59,7 @@ namespace ShakikulFramework.Method
         {
             var firstInvoiceStringLength = firstInvoiceString.Length;
             var mainInvoice = Convert.ToDouble(invoiceSource.Substring(firstInvoiceStringLength));
-            if (mainInvoice == 9999999999999999999)
+            if (mainInvoice == invoiceLimit)
             {
                 throw new Exception("Invoice Out of Range please Contact Developer");
             }
@@ -79,7 +80,7 @@ namespace ShakikulFramework.Method
             var firstInvoiceStringLength = firstInvoiceString.Length;
             var lastInvoiceStringLength = lastInvoiceString.Length;
             var mainInvoice = Convert.ToDouble(invoiceSource.Substring(firstInvoiceStringLength,invoiceSourceLength-(firstInvoiceStringLength+lastInvoiceStringLength)));
-            if (mainInvoice == 9999999999999999999)
+            if (mainInvoice == invoiceLimit)
             {
                 throw new Exception("Invoice Out of Range please Contact Developer");
             }
