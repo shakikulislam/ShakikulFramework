@@ -1,30 +1,43 @@
 ﻿using System;
-using System.CodeDom;
-using System.Globalization;
-using System.Net;
 
 namespace ShakikulFramework.Method
 {
     public class AutoGenerateInvoice
     {
         private double invoiceLimit = 18446744073709551615;
+
+        private double Increment(double increment)
+        {
+            if (!(increment > 0))
+            {
+                throw new Exception("Please enter positive value");
+            }
+            
+            return increment;
+        }
+
+        private void Maximum(double invoiceSource)
+        {
+            if (invoiceSource >= invoiceLimit)
+            {
+                throw new Exception("Invoice Out of Range please Contact Developer");
+            }
+        }
+
         /// <summary>
+        /// MD SHAKIKUL ISLAM
         /// This Method perfectly use only integer type invoice numbers
         /// And return type only double
         /// Using double because double type support max 9999999999999999999 big space.
         /// This space is not possible of int type.
         /// </summary>
-        /// <param name="invoiceSource"></param>
         /// <returns></returns>
-        public double Invoice(double invoiceSource)
+        public double Invoice(double invoiceSource, double increment)
         {
             //var startPoint = 0;
-            if (invoiceSource >= invoiceLimit)
-            {
-                throw new Exception("Invoice Out of Range please Contact Developer");
-            }
+            Maximum(invoiceSource);
 
-            return invoiceSource + 0.01;
+            return invoiceSource + Increment(increment);
 
             //var inputInvoice = Convert.ToString(invoiceSource);
 
@@ -52,39 +65,33 @@ namespace ShakikulFramework.Method
         /// <summary>
         /// MD SHAKIKUL ISLAM
         /// </summary>
-        /// <param name="invoiceSource"></param>
-        /// <param name="firstInvoiceString"></param>
         /// <returns></returns>
-        public string Invoice(string invoiceSource, string firstInvoiceString)
+        public string Invoice(string invoiceSource, string firstInvoiceString, double increment)
         {
             var firstInvoiceStringLength = firstInvoiceString.Length;
             var mainInvoice = Convert.ToDouble(invoiceSource.Substring(firstInvoiceStringLength));
-            if (mainInvoice == invoiceLimit)
-            {
-                throw new Exception("Invoice Out of Range please Contact Developer");
-            }
-            mainInvoice += 0.01;
+            
+            Maximum(mainInvoice);
+
+            mainInvoice += Increment(increment);
             return firstInvoiceString + mainInvoice;
         }
 
         /// <summary>
         /// MD SHAKIKUL ISLAM
         /// </summary>
-        /// <param name="invoiceSource"></param>
-        /// <param name="firstInvoiceString"></param>
-        /// <param name="lastInvoiceString"></param>
         /// <returns></returns>
-        public string Invoice(string invoiceSource, string firstInvoiceString, string lastInvoiceString)
+        public string Invoice(string invoiceSource, string firstInvoiceString, string lastInvoiceString, double increment)
         {
             var invoiceSourceLength = invoiceSource.Length;
             var firstInvoiceStringLength = firstInvoiceString.Length;
             var lastInvoiceStringLength = lastInvoiceString.Length;
             var mainInvoice = Convert.ToDouble(invoiceSource.Substring(firstInvoiceStringLength,invoiceSourceLength-(firstInvoiceStringLength+lastInvoiceStringLength)));
-            if (mainInvoice == invoiceLimit)
-            {
-                throw new Exception("Invoice Out of Range please Contact Developer");
-            }
-            mainInvoice += 0.01;
+            
+            Maximum(mainInvoice);
+
+            mainInvoice += Increment(increment);
+
             return firstInvoiceString + mainInvoice + lastInvoiceString;
         }
 
