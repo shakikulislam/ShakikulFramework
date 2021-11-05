@@ -89,6 +89,12 @@
     <Compile Include="Toolbox\SADragControl.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Toolbox\SATextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Toolbox\SATextBox.Designer.cs">
+      <DependentUpon>SATextBox.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -109,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Toolbox\SAScrollingLabelText.resx">
       <DependentUpon>SAScrollingLabelText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Toolbox\SATextBox.resx">
+      <DependentUpon>SATextBox.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
