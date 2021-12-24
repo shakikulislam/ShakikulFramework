@@ -8,7 +8,7 @@ namespace ShakikulFramework.Toolbox
     public class SADragControl : Component
     {
         private Control _control;
-
+        
         #region Event
 
         [DllImport("user32.dll")]
@@ -17,7 +17,7 @@ namespace ShakikulFramework.Toolbox
         [DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
 
-        private void DragForm_MouseDown(object sender, MouseEventArgs e)
+        private void Drag_MouseDown(object sender, MouseEventArgs e)
         {
             bool flag = e.Button == MouseButtons.Left;
             if (flag)
@@ -30,9 +30,8 @@ namespace ShakikulFramework.Toolbox
 
                 if (SelectHandle.Selected == _selectHandle)
                 {
-                    SendMessage(this.SelectControl.Handle, 161, 2, 0);
+                    SendMessage(this.SelectMoveable.Handle, 161, 2, 0);
                 }
-
             }
         }
 
@@ -57,9 +56,27 @@ namespace ShakikulFramework.Toolbox
             set
             {
                 _control = value;
-                _control.MouseDown += new MouseEventHandler(DragForm_MouseDown);
+                _control.MouseDown += new MouseEventHandler(Drag_MouseDown);
             }
         }
+
+        private Control _selectMoveable;
+
+        [Category("Shakikul Framework")]
+        public Control SelectMoveable
+        {
+            get { return _selectMoveable;}
+            set
+            {
+                //_selectMoveable = _selectMoveable.TopLevelControl;
+                if (SelectHandle.Selected == _selectHandle)
+                {
+                    _selectMoveable = value;
+                }
+            } 
+
+        }
+
         #endregion
 
     }
