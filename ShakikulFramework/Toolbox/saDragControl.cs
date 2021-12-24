@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ShakikulFramework.Toolbox
@@ -27,12 +23,12 @@ namespace ShakikulFramework.Toolbox
             if (flag)
             {
                 ReleaseCapture();
-                if (SelectHandle.Form == _SelectHandle)
+                if (SelectHandle.Form == _selectHandle)
                 {
                     SendMessage(this.SelectControl.FindForm().Handle, 161, 2, 0);
                 }
 
-                if (SelectHandle.Selected == _SelectHandle)
+                if (SelectHandle.Selected == _selectHandle)
                 {
                     SendMessage(this.SelectControl.Handle, 161, 2, 0);
                 }
@@ -44,14 +40,14 @@ namespace ShakikulFramework.Toolbox
 
         #region Properties
 
-        private SelectHandle _SelectHandle=SelectHandle.Form;
+        private SelectHandle _selectHandle = SelectHandle.Form;
 
         [Category("Shakikul Framework")]
         [DefaultValue(typeof(SelectHandle),"Form")]
         public SelectHandle SelectHandle
         {
-            get { return _SelectHandle; }
-            set { _SelectHandle = value; }
+            get { return _selectHandle; }
+            set { _selectHandle = value; }
         }
 
         [Category("Shakikul Framework")]
@@ -61,7 +57,7 @@ namespace ShakikulFramework.Toolbox
             set
             {
                 _control = value;
-                _control.MouseDown+=new MouseEventHandler(DragForm_MouseDown);
+                _control.MouseDown += new MouseEventHandler(DragForm_MouseDown);
             }
         }
         #endregion
