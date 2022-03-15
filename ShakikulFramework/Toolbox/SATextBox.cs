@@ -16,7 +16,7 @@ namespace ShakikulFramework.Toolbox
         private Color borderFocusColor = Color.HotPink;
         private bool isFocused = false;
         private int borderRadius = 0;
-        private Color placeholderColor = Color.DarkGray;
+        private Color placeholderColor = Color.Silver;
         private string placeholderText = "";
         private bool isPlaceholder = false;
         private bool isPasswordChar = false;
@@ -32,7 +32,7 @@ namespace ShakikulFramework.Toolbox
 
         #region Properties
         
-        [Category("Shakikul Framework")]
+        [Category("Shakikul Islam")]
         public Color BorderColor
         {
             get { return borderColor; }
@@ -43,7 +43,7 @@ namespace ShakikulFramework.Toolbox
             }
         }
 
-        [Category("Shakikul Framework")]
+        [Category("Shakikul Islam")]
         public int BorderSize
         {
             get { return borderSize; }
@@ -54,7 +54,7 @@ namespace ShakikulFramework.Toolbox
             }
         }
 
-        [Category("Shakikul Framework")]
+        [Category("Shakikul Islam")]
         public bool UnderlineStyle
         {
             get { return underlineStyle; }
@@ -65,7 +65,7 @@ namespace ShakikulFramework.Toolbox
             }
         }
 
-        [Category("Shakikul Framework")]
+        [Category("Shakikul Islam")]
         public bool PasswordChar
         {
             get { return isPasswordChar; }
@@ -76,14 +76,14 @@ namespace ShakikulFramework.Toolbox
             }
         }
 
-        [Category("Shakikul Framework")]
+        [Category("Shakikul Islam")]
         public bool Multiline
         {
             get { return textBox1.Multiline; }
             set { textBox1.Multiline = value; }
         }
 
-        [Category("Shakikul Framework")]
+        [Category("Shakikul Islam")]
         public override Color BackColor
         {
             get { return base.BackColor; }
@@ -95,7 +95,7 @@ namespace ShakikulFramework.Toolbox
 
         }
 
-        [Category("Shakikul Framework")]
+        [Category("Shakikul Islam")]
         public override Color ForeColor
         {
             get { return base.ForeColor; }
@@ -106,7 +106,7 @@ namespace ShakikulFramework.Toolbox
             }
         }
 
-        [Category("Shakikul Framework")]
+        [Category("Shakikul Islam")]
         public override Font Font
         {
             get { return base.Font; }
@@ -121,8 +121,8 @@ namespace ShakikulFramework.Toolbox
             }
         }
 
-        [Category("Shakikul Framework")]
-        public string Texts
+        [Category("Shakikul Islam")]
+        public override string Text
         {
             get { return isPlaceholder ? "" : textBox1.Text; }
             set
@@ -131,15 +131,15 @@ namespace ShakikulFramework.Toolbox
                 SetPlaceholder();
             }
         }
-        
-        [Category("Shakikul Framework")]
+
+        [Category("Shakikul Islam")]
         public Color BorderFocusColor
         {
             get { return borderFocusColor; }
             set { borderFocusColor = value; }
         }
 
-        [Category("Shakikul Framework")]
+        [Category("Shakikul Islam")]
         public int BorderRadius
         {
             get { return borderRadius; }
@@ -152,7 +152,7 @@ namespace ShakikulFramework.Toolbox
             }
         }
 
-        [Category("Shakikul Framework")]
+        [Category("Shakikul Islam")]
         public Color PlaceholderColor
         {
             get { return placeholderColor; }
@@ -166,7 +166,7 @@ namespace ShakikulFramework.Toolbox
             }
         }
 
-        [Category("Shakikul Framework")]
+        [Category("Shakikul Islam")]
         public string PlaceholderText
         {
             get { return placeholderText; }
@@ -191,6 +191,7 @@ namespace ShakikulFramework.Toolbox
                 }
             }
         }
+
         private void RemovePlaceholder()
         {
             if (isPlaceholder && placeholderText!="")
@@ -320,7 +321,7 @@ namespace ShakikulFramework.Toolbox
             base.OnLoad(e);
             UpdateControlHeight();
         }
-
+        
         #region MyRegion
 
         private void UpdateControlHeight()
@@ -344,34 +345,46 @@ namespace ShakikulFramework.Toolbox
         {
             //this.OnTextChanged(e);
         }
+
         private void textBox1_Click(object sender, EventArgs e)
         {
             this.OnClick(e);
         }
+
         private void textBox1_MouseEnter(object sender, EventArgs e)
         {
             this.OnMouseEnter(e);
         }
+
         private void textBox1_MouseLeave(object sender, EventArgs e)
         {
             this.OnMouseLeave(e);
         }
+
         private void textBox1_Enter(object sender, EventArgs e)
         {
             isFocused = true;
             this.Invalidate();
             RemovePlaceholder();
         }
+
         private void textBox1_Leave(object sender, EventArgs e)
         {
             isFocused = false;
             this.Invalidate();
             SetPlaceholder();
         }
+
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             this.OnKeyPress(e);
         }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            this.OnKeyDown(e);
+        }
+        
 
         #endregion
 
