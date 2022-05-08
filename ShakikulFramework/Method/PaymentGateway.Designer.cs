@@ -54,6 +54,7 @@
             this.comboBoxGatewayList = new System.Windows.Forms.ComboBox();
             this.textBoxAccountNo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.buttonReset = new System.Windows.Forms.Button();
             this.panelCheck.SuspendLayout();
             this.panelCard.SuspendLayout();
             this.panelMobileBanking.SuspendLayout();
@@ -224,6 +225,7 @@
             this.textBoxAmount.TabIndex = 19;
             this.textBoxAmount.Text = "0.00";
             this.textBoxAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxAmount.Click += new System.EventHandler(this.textBoxAmount_Click);
             this.textBoxAmount.TextChanged += new System.EventHandler(this.textBoxAmount_TextChanged);
             // 
             // label5
@@ -328,11 +330,24 @@
             this.label2.TabIndex = 15;
             this.label2.Text = "Account No";
             // 
+            // buttonReset
+            // 
+            this.buttonReset.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonReset.Location = new System.Drawing.Point(336, 163);
+            this.buttonReset.Name = "buttonReset";
+            this.buttonReset.Size = new System.Drawing.Size(75, 32);
+            this.buttonReset.TabIndex = 24;
+            this.buttonReset.Text = "Reset";
+            this.buttonReset.UseVisualStyleBackColor = true;
+            this.buttonReset.Visible = false;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
+            // 
             // PaymentGateway
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
+            this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.buttonValidity);
             this.Controls.Add(this.panelCheck);
             this.Controls.Add(this.panelCard);
@@ -362,7 +377,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button buttonValidity;
         private System.Windows.Forms.Panel panelCheck;
         private System.Windows.Forms.TextBox textBoxBankBranchName;
         private System.Windows.Forms.Label label11;
@@ -377,16 +391,18 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBoxCardHolderName;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBoxAmount;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panelMobileBanking;
         private System.Windows.Forms.TextBox textBoxTransactionId;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBoxGatewayList;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button buttonReset;
+        private System.Windows.Forms.Button buttonValidity;
+        private System.Windows.Forms.TextBox textBoxAmount;
         private System.Windows.Forms.DateTimePicker dateTimePickerTransactionDate;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBoxGatewayList;
         private System.Windows.Forms.TextBox textBoxAccountNo;
-        private System.Windows.Forms.Label label2;
     }
 }

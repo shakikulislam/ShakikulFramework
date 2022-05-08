@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -9,6 +7,7 @@ namespace ShakikulFramework.Method
 {
     public partial class PaymentGateway : UserControl
     {
+        //Variable
         private static string _paymentMethod = "";
         private static string _accountNumber = "";
         private static DateTime _transactionDate;
@@ -34,7 +33,32 @@ namespace ShakikulFramework.Method
         public static string CardHolderName { get { return _cardHolderName; } }
         public static string CardNumber { get { return _cardNumber; } }
 
+        //Method
+        public void Reset() { buttonReset.PerformClick(); }
+        private void ShowPanel(Control panel)
+        {
+            foreach (var panels in Controls.OfType<Panel>())
+            {
+                foreach (var textBox in panels.Controls.OfType<TextBox>())
+                {
+                    textBox.Clear();
+                }
+                panels.Visible = false;
+            }
 
+            textBoxAccountNo.Clear();
+            textBoxAmount.Text = "0.00";
+            textBoxAccountNo.Enabled = true;
+            dateTimePickerTransactionDate.Enabled = true;
+
+            panel.Location = new Point(8, 126);
+            panel.Size = new Size(390, panel.Height);
+            panel.Visible = true;
+            textBoxAccountNo.Focus();
+            buttonValidity.Location = new Point(312, panel.Location.Y + panel.Height);
+        }
+
+        //Constructor
         public PaymentGateway()
         {
             InitializeComponent();
@@ -47,31 +71,11 @@ namespace ShakikulFramework.Method
                 "Card",
                 "Check"
             };
-
+            comboBoxGatewayList.SelectedIndex = 0;
             dateTimePickerTransactionDate.MaxDate = DateTime.Now;
         }
         
-        private void ShowPanel(Control panel)
-        {
-            foreach (var panels in Controls.OfType<Panel>())
-            {
-                foreach (var textBox in panels.Controls.OfType<TextBox>())
-                {
-                    textBox.Clear();
-                }
-                panels.Visible = false;
-            }
-
-            textBoxAccountNo.Enabled = true;
-            dateTimePickerTransactionDate.Enabled = true;
-
-            panel.Location = new Point(8, 126);
-            panel.Size = new Size(390, panel.Height);
-            panel.Visible = true;
-            textBoxAccountNo.Focus();
-            buttonValidity.Location = new Point(312, panel.Location.Y + panel.Height);
-        }
-        
+        //Event
         private void comboBoxGatewayList_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             try
@@ -89,9 +93,11 @@ namespace ShakikulFramework.Method
                             }
                             panel.Visible = false;
                         }
+                        textBoxAccountNo.Clear();
                         textBoxAccountNo.Enabled = false;
                         dateTimePickerTransactionDate.Enabled = false;
                         buttonValidity.Location = new Point(317, 91);
+                        textBoxAmount.Text = "0.00";
                         textBoxAmount.SelectAll();
                         textBoxAmount.Focus();
                         break;
@@ -142,6 +148,7 @@ namespace ShakikulFramework.Method
                                 textBoxAmount.SelectAll();
                                 throw new Exception("Please enter amount and try again");
                             }
+                            throw new Exception("Verification of payment information has been successful");
                             break;
                         }
                         case "bKash":
@@ -168,6 +175,7 @@ namespace ShakikulFramework.Method
                                 textBoxTransactionId.SelectAll();
                                 throw new Exception("Please enter Transaction ID");
                             }
+                            throw new Exception("Verification of payment information has been successful");
                             break;
                         }
                         case "Rocket":
@@ -194,6 +202,7 @@ namespace ShakikulFramework.Method
                                 textBoxTransactionId.SelectAll();
                                 throw new Exception("Please enter Transaction ID");
                             }
+                            throw new Exception("Verification of payment information has been successful");
                             break;
                         }
                         case "Card":
@@ -221,6 +230,7 @@ namespace ShakikulFramework.Method
                                 textBoxCardNumber.SelectAll();
                                 throw new Exception("Please enter card number");
                             }
+                            throw new Exception("Verification of payment information has been successful");
                             break;
                         }
                         case "Check":
@@ -231,7 +241,7 @@ namespace ShakikulFramework.Method
                             _bankName = textBoxBankName.Text.Trim();
                             _bankBranchName = textBoxBankBranchName.Text.Trim();
                             _bankAccountName = textBoxBankAccountName.Text.Trim();
-                            _cardNumber = textBoxCheckNumber.Text.Trim();
+                            _checkNumber = textBoxCheckNumber.Text.Trim();
                             if (string.IsNullOrEmpty(AccountNumber))
                             {
                                 textBoxAccountNo.Focus();
@@ -268,6 +278,7 @@ namespace ShakikulFramework.Method
                                 textBoxCheckNumber.SelectAll();
                                 throw new Exception("Please enter check number");
                             }
+                            throw new Exception("Verification of payment information has been successful");
                             break;
                         }
                     }
@@ -309,6 +320,16 @@ namespace ShakikulFramework.Method
             {
                 textBoxAmount.Clear();
             }
+        }
+
+        private void textBoxAmount_Click(object sender, EventArgs e)
+        {
+            textBoxAmount.SelectAll();
+        }
+
+        private void buttonReset_Click(object sender, EventArgs e)
+        {
+            comboBoxGatewayList.SelectedIndex = 0;
         }
 
 
