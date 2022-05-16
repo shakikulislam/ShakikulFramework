@@ -55,15 +55,17 @@
             this.textBoxAccountNo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonReset = new System.Windows.Forms.Button();
+            this.panelButton = new System.Windows.Forms.Panel();
             this.panelCheck.SuspendLayout();
             this.panelCard.SuspendLayout();
             this.panelMobileBanking.SuspendLayout();
+            this.panelButton.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonValidity
             // 
             this.buttonValidity.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonValidity.Location = new System.Drawing.Point(317, 91);
+            this.buttonValidity.Location = new System.Drawing.Point(84, 3);
             this.buttonValidity.Name = "buttonValidity";
             this.buttonValidity.Size = new System.Drawing.Size(75, 32);
             this.buttonValidity.TabIndex = 23;
@@ -333,22 +335,29 @@
             // buttonReset
             // 
             this.buttonReset.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonReset.Location = new System.Drawing.Point(336, 163);
+            this.buttonReset.Location = new System.Drawing.Point(3, 3);
             this.buttonReset.Name = "buttonReset";
             this.buttonReset.Size = new System.Drawing.Size(75, 32);
             this.buttonReset.TabIndex = 24;
             this.buttonReset.Text = "Reset";
             this.buttonReset.UseVisualStyleBackColor = true;
-            this.buttonReset.Visible = false;
             this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
+            // 
+            // panelButton
+            // 
+            this.panelButton.Controls.Add(this.buttonReset);
+            this.panelButton.Controls.Add(this.buttonValidity);
+            this.panelButton.Location = new System.Drawing.Point(220, 154);
+            this.panelButton.Name = "panelButton";
+            this.panelButton.Size = new System.Drawing.Size(163, 39);
+            this.panelButton.TabIndex = 25;
             // 
             // PaymentGateway
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.Controls.Add(this.buttonReset);
-            this.Controls.Add(this.buttonValidity);
+            this.Controls.Add(this.panelButton);
             this.Controls.Add(this.panelCheck);
             this.Controls.Add(this.panelCard);
             this.Controls.Add(this.textBoxAmount);
@@ -370,6 +379,7 @@
             this.panelCard.PerformLayout();
             this.panelMobileBanking.ResumeLayout(false);
             this.panelMobileBanking.PerformLayout();
+            this.panelButton.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -404,5 +414,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerTransactionDate;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxAccountNo;
+        private System.Windows.Forms.Panel panelButton;
     }
 }

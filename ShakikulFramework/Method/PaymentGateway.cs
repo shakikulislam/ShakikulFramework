@@ -34,8 +34,11 @@ namespace ShakikulFramework.Method
         public static string CardNumber { get { return _cardNumber; } }
 
         //Method
-        public void Reset() { buttonReset.PerformClick(); }
-        private void ShowPanel(Control panel)
+        public void Reset()
+        {
+            buttonReset.PerformClick();
+        }
+        private void ShowPanel(Control panel=null)
         {
             foreach (var panels in Controls.OfType<Panel>())
             {
@@ -43,19 +46,37 @@ namespace ShakikulFramework.Method
                 {
                     textBox.Clear();
                 }
-                panels.Visible = false;
+
+                panels.Visible = panels.Name == panelButton.Name;
             }
 
-            textBoxAccountNo.Clear();
-            textBoxAmount.Text = "0.00";
-            textBoxAccountNo.Enabled = true;
-            dateTimePickerTransactionDate.Enabled = true;
+            if (panel==null)
+            {
+                textBoxAccountNo.Clear();
+                textBoxAccountNo.Enabled = false;
+                dateTimePickerTransactionDate.Enabled = false;
+                panelButton.Location = new Point(220, textBoxAmount.Location.Y + textBoxAmount.Height);
+                textBoxAmount.Text = "0.00";
+                textBoxAmount.SelectAll();
+                textBoxAmount.Focus();
+            }
+            else
+            {
+                textBoxAccountNo.Clear();
+                textBoxAmount.Text = "0.00";
+                textBoxAccountNo.Enabled = true;
+                dateTimePickerTransactionDate.Enabled = true;
 
-            panel.Location = new Point(8, 126);
-            panel.Size = new Size(390, panel.Height);
-            panel.Visible = true;
-            textBoxAccountNo.Focus();
-            buttonValidity.Location = new Point(312, panel.Location.Y + panel.Height);
+                panel.Location = new Point(8, 126);
+                panel.Size = new Size(390, panel.Height);
+                panel.Visible = true;
+                textBoxAccountNo.Focus();
+                panelButton.Location = new Point(220, panel.Location.Y + panel.Height);
+            }
+
+            
+            //buttonReset.Location = new Point(236, panel.Location.Y + panel.Height);
+            //buttonValidity.Location = new Point(317, panel.Location.Y + panel.Height);
         }
 
         //Constructor
@@ -85,21 +106,23 @@ namespace ShakikulFramework.Method
                 {
                     case "Cash":
                     {
-                        foreach (var panel in Controls.OfType<Panel>())
-                        {
-                            foreach (var textBox in panel.Controls.OfType<TextBox>())
-                            {
-                                textBox.Clear();
-                            }
-                            panel.Visible = false;
-                        }
-                        textBoxAccountNo.Clear();
-                        textBoxAccountNo.Enabled = false;
-                        dateTimePickerTransactionDate.Enabled = false;
-                        buttonValidity.Location = new Point(317, 91);
-                        textBoxAmount.Text = "0.00";
-                        textBoxAmount.SelectAll();
-                        textBoxAmount.Focus();
+                        //foreach (var panel in Controls.OfType<Panel>())
+                        //{
+                        //    foreach (var textBox in panel.Controls.OfType<TextBox>())
+                        //    {
+                        //        textBox.Clear();
+                        //    }
+                        //    panel.Visible = false;
+                        //}
+                        //textBoxAccountNo.Clear();
+                        //textBoxAccountNo.Enabled = false;
+                        //dateTimePickerTransactionDate.Enabled = false;
+                        //buttonReset.Location = new Point(236, 130);
+                        //buttonValidity.Location = new Point(317, 130);
+                        //textBoxAmount.Text = "0.00";
+                        //textBoxAmount.SelectAll();
+                        //textBoxAmount.Focus();
+                        ShowPanel();
                         break;
                     }
                     case "bKash":
@@ -330,6 +353,7 @@ namespace ShakikulFramework.Method
         private void buttonReset_Click(object sender, EventArgs e)
         {
             comboBoxGatewayList.SelectedIndex = 0;
+
         }
 
 
