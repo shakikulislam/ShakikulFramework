@@ -84,13 +84,12 @@
             // 
             this.labelMessageTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelMessageTitle.AutoSize = true;
             this.labelMessageTitle.BackColor = System.Drawing.Color.Transparent;
             this.labelMessageTitle.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelMessageTitle.ForeColor = System.Drawing.Color.White;
             this.labelMessageTitle.Location = new System.Drawing.Point(5, 5);
             this.labelMessageTitle.Name = "labelMessageTitle";
-            this.labelMessageTitle.Size = new System.Drawing.Size(42, 22);
+            this.labelMessageTitle.Size = new System.Drawing.Size(386, 20);
             this.labelMessageTitle.TabIndex = 2;
             this.labelMessageTitle.Text = "Error";
             this.labelMessageTitle.UseCompatibleTextRendering = true;
@@ -107,11 +106,12 @@
             this.Font = new System.Drawing.Font("Arial", 8.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormAlert";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.Text = "Form_Alert";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
