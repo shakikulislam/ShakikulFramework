@@ -11,34 +11,37 @@ namespace ShakikulFramework
             InitializeComponent();
         }
 
-        private enum ActionEnum
+        public enum Action
         {
-            Wait, Start, Close
+            Wait,
+            Start,
+            Close,
+            Stand
         }
 
-        public enum TypeEnum
+        public enum MessageType
         {
             Success, Warning, Error, Information, Delete
         }
 
-        private ActionEnum _action;
+        private Action _action;
         private int _x, _y;
         
         private void pictureBoxClose_Click(object sender, System.EventArgs e)
         {
             timerAlert.Interval = 1;
-            _action = ActionEnum.Close;
+            _action = Action.Close;
         }
 
         private void timerAlert_Tick(object sender, System.EventArgs e)
         {
             switch (_action)
             {
-                case ActionEnum.Wait:
+                case Action.Wait:
                     timerAlert.Interval = 5000;
-                    _action = ActionEnum.Close;
+                    _action = Action.Close;
                     break;
-                case ActionEnum.Start:
+                case Action.Start:
                     timerAlert.Interval = 1;
                     Opacity += 0.1;
                     if (_x<this.Location.X)
@@ -49,11 +52,11 @@ namespace ShakikulFramework
                     {
                         if (this.Opacity==1.0)
                         {
-                            _action = ActionEnum.Wait;
+                            _action = Action.Wait;
                         }
                     }
                     break;
-                case ActionEnum.Close:
+                case Action.Close:
                     timerAlert.Interval = 1;
                     this.Opacity -= 0.1;
                     this.Left -= 3;
@@ -61,11 +64,23 @@ namespace ShakikulFramework
                     {
                         this.Close();
                     }
+                    break;  
+                case Action.Stand:
+                    timerAlert.Interval = 1;
+                    Opacity += 0.1;
+                    if (_x<this.Location.X)
+                    {
+                        this.Left--;
+                    }
+                    else
+                    {
+                        
+                    }
                     break;             
             }
         }
         
-        private void Alert(string message, TypeEnum type)
+        private void Alert(string message, string messageTitle, MessageType type, Action action)
         {
             this.Opacity = 0.0;
             this.StartPosition = FormStartPosition.Manual;
@@ -88,27 +103,28 @@ namespace ShakikulFramework
             }
             
             //_x = Screen.PrimaryScreen.WorkingArea.Width - this.Width - 5;
+            labelMessageTitle.Text = messageTitle;
             labelMessage.Text = message;
 
             switch (type)
             {
-                case TypeEnum.Success:
+                case MessageType.Success:
                     pictureBoxIcon.Image = Resources.Success;
                     BackColor = Color.SeaGreen;
                     break;
-                case TypeEnum.Error:
+                case MessageType.Error:
                     pictureBoxIcon.Image = Resources.Error;
                     BackColor = Color.DarkRed;
                     break;
-                case TypeEnum.Information:
+                case MessageType.Information:
                     pictureBoxIcon.Image = Resources.Info;
                     BackColor = Color.RoyalBlue;
                     break;
-                case TypeEnum.Warning:
+                case MessageType.Warning:
                     pictureBoxIcon.Image = Resources.Warning;
                     BackColor = Color.DarkOrange;
                     break;
-                case TypeEnum.Delete:
+                case MessageType.Delete:
                     pictureBoxIcon.Image = Resources.Delete;
                     BackColor = Color.Red;
                     break;
@@ -117,16 +133,16 @@ namespace ShakikulFramework
             TopMost = true;
             Show();
 
-            _action = ActionEnum.Start;
+            _action = action;
 
             timerAlert.Interval = 1;
             timerAlert.Start();
         }
 
-        public void ShowAlert(string message, TypeEnum type)
+        public void ShowAlert(string message, string messageTitle, MessageType type, Action action)
         {
             var alert=new FormAlert();
-            alert.Alert(message, type);
+            alert.Alert(message, messageTitle, type, action);
         }
 
     }

@@ -33,28 +33,31 @@
             this.pictureBoxClose = new System.Windows.Forms.PictureBox();
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.timerAlert = new System.Windows.Forms.Timer(this.components);
+            this.labelMessageTitle = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // labelMessage
             // 
+            this.labelMessage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelMessage.BackColor = System.Drawing.Color.Transparent;
-            this.labelMessage.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMessage.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelMessage.ForeColor = System.Drawing.Color.White;
-            this.labelMessage.Location = new System.Drawing.Point(46, 8);
+            this.labelMessage.Location = new System.Drawing.Point(46, 33);
             this.labelMessage.Name = "labelMessage";
-            this.labelMessage.Size = new System.Drawing.Size(202, 35);
+            this.labelMessage.Size = new System.Drawing.Size(301, 46);
             this.labelMessage.TabIndex = 0;
             this.labelMessage.Text = "দয়া করে এই ফর্মটি পূরণ করুন এবং আবার চেষ্টা করুন।";
-            this.labelMessage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.labelMessage.UseCompatibleTextRendering = true;
             // 
             // pictureBoxClose
             // 
+            this.pictureBoxClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxClose.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxClose.Image = global::ShakikulFramework.Properties.Resources.Cancel;
-            this.pictureBoxClose.Location = new System.Drawing.Point(254, 13);
+            this.pictureBoxClose.Location = new System.Drawing.Point(353, 37);
             this.pictureBoxClose.Name = "pictureBoxClose";
             this.pictureBoxClose.Size = new System.Drawing.Size(25, 25);
             this.pictureBoxClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -66,7 +69,7 @@
             // 
             this.pictureBoxIcon.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxIcon.Image = global::ShakikulFramework.Properties.Resources.Info;
-            this.pictureBoxIcon.Location = new System.Drawing.Point(5, 8);
+            this.pictureBoxIcon.Location = new System.Drawing.Point(5, 32);
             this.pictureBoxIcon.Name = "pictureBoxIcon";
             this.pictureBoxIcon.Size = new System.Drawing.Size(35, 35);
             this.pictureBoxIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -77,11 +80,27 @@
             // 
             this.timerAlert.Tick += new System.EventHandler(this.timerAlert_Tick);
             // 
+            // labelMessageTitle
+            // 
+            this.labelMessageTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelMessageTitle.AutoSize = true;
+            this.labelMessageTitle.BackColor = System.Drawing.Color.Transparent;
+            this.labelMessageTitle.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMessageTitle.ForeColor = System.Drawing.Color.White;
+            this.labelMessageTitle.Location = new System.Drawing.Point(5, 5);
+            this.labelMessageTitle.Name = "labelMessageTitle";
+            this.labelMessageTitle.Size = new System.Drawing.Size(42, 22);
+            this.labelMessageTitle.TabIndex = 2;
+            this.labelMessageTitle.Text = "Error";
+            this.labelMessageTitle.UseCompatibleTextRendering = true;
+            // 
             // FormAlert
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Highlight;
-            this.ClientSize = new System.Drawing.Size(296, 50);
+            this.ClientSize = new System.Drawing.Size(395, 91);
+            this.Controls.Add(this.labelMessageTitle);
             this.Controls.Add(this.pictureBoxIcon);
             this.Controls.Add(this.pictureBoxClose);
             this.Controls.Add(this.labelMessage);
@@ -92,6 +111,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -101,5 +121,6 @@
         private System.Windows.Forms.PictureBox pictureBoxIcon;
         internal System.Windows.Forms.Timer timerAlert;
         private System.Windows.Forms.Label labelMessage;
+        private System.Windows.Forms.Label labelMessageTitle;
     }
 }
