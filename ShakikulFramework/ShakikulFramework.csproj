@@ -73,6 +73,9 @@
     <Compile Include="Toolbox\SAFormAlert.designer.cs">
       <DependentUpon>SAFormAlert.cs</DependentUpon>
     </Compile>
+    <Compile Include="Toolbox\SaPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Toolbox\SAScrollingLabel.cs">
       <SubType>Component</SubType>
     </Compile>
