@@ -61,6 +61,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Toolbox\MessageBoxInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Toolbox\MessageBoxInput.Designer.cs">
+      <DependentUpon>MessageBoxInput.cs</DependentUpon>
+    </Compile>
     <Compile Include="Toolbox\SAErrorProvider.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -105,6 +111,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Toolbox\MessageBoxInput.resx">
+      <DependentUpon>MessageBoxInput.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Toolbox\SAErrorProvider.resx">
       <DependentUpon>SAErrorProvider.cs</DependentUpon>
