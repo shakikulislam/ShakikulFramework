@@ -13,9 +13,17 @@ namespace ShakikulFramework.Toolbox
             InitializeComponent();
         }
         
-        public static string Show(string message, string title="")
+        public static string Show(string message, string title="", string inputPrefix="")
         {
-            MessageBox = new MessageBoxInput {Text = title, labelMessage = {Text = message}};
+            MessageBox = new MessageBoxInput
+            {
+                Text = title, 
+                labelMessage = {Text = message}, 
+                textBoxInput = {Text = inputPrefix}
+            };
+
+            MessageBox.textBoxInput.Select(inputPrefix.Length, 0);
+
             MessageBox.ShowDialog();
             return _inputText;
         }
