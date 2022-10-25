@@ -24,6 +24,8 @@ namespace ShakikulFramework.Toolbox
 
             MessageBox.textBoxInput.Select(inputPrefix.Length, 0);
 
+            _inputText = string.Empty;
+
             MessageBox.ShowDialog();
             return _inputText;
         }
